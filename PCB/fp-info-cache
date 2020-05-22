@@ -75300,36 +75300,36 @@ Through hole IDC box header THT 2x08 2.54mm double row
 16
 troglodisme_footprints
 IN-S126AT5UW
-LED WHITE CLEAR 1206 SMD	
-LED handsolder 1206 WHITE
+LED WHITE CLEAR 1206 SMD	
+
+0
 0
 2
 2
 troglodisme_footprints
 JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal_noSilkScreen
 JST PH series connector, S2B-PH-K (http://www.jst-mfg.com/product/pdf/eng/ePH.pdf), generated with kicad-footprint-generator
-connector JST PH top entry 2
+0
 0
 2
 2
 troglodisme_footprints
 R_1210_3225Metric_Pad1.42x2.65mm_HandSolder
 Resistor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-resistor handsolder
+0
 0
 2
 2
 troglodisme_footprints
 SD1206S040S2R0
 SD1206S040S2R0
-Schottky Diode 1206
+0
 0
 2
 2
 troglodisme_footprints
 TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal
 Terminal Block TE 282834-2, 2 pins, pitch 2.54mm, size 5.54x6.5mm^2, drill diamater 1.1mm, pad diameter 2.1mm, see http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F282834%7FC1%7Fpdf%7FEnglish%7FENG_CD_282834_C1.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_TE-Connectivity
-THT Terminal Block TE 282834-2 pitch 2.54mm size 5.54x6.5mm^2 drill 1.1mm pad 2.1mm
 0
-2
+0
 2
