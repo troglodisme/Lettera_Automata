@@ -1,4 +1,4 @@
-//REMEMBER TO CHANGE SERIAL PORT 
+//REMEMBER TO CHANGE SERIAL PORT
 
 let serial;
 var textfield;
@@ -48,6 +48,8 @@ function spellWords() {
   serial.write(c);
 	}
 }
+
+//explore setTimeout(create,1000); and setInterval
 
 // When triggered, the server sends H or L out the serial port
 function led() {
