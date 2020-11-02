@@ -4,10 +4,10 @@ let serial;
 var textfield;
 var output;
 var submit;
+var alphabet;
+
 
 let portName = '/dev/tty.usbserial-1420'; // fill in your serial port name here
-
-let outMessage = 'H';
 
 
 function setup() {
@@ -20,11 +20,14 @@ function setup() {
   serial.on('data', gotData);
 
   textfield = select('#txt');
-  output = select('#output');
+  // output = select('#output');
   submit = select('#submit');
   submit.mousePressed(spellWords);
-}
 
+  //test alphabet
+  alphabet = select('#alphabet');
+  alphabet.mousePressed(testAlphabet);
+}
 
 function gotList(thelist) {
   console.log("List of Serial Ports:");
@@ -38,7 +41,8 @@ function gotData() {
   console.log(currentString);
 }
 
-//////FUNCTION SPELL WORDS AND SEND TO SERIAL///////
+
+//////SPELL WORDS FUNCTION///////
 function spellWords() {
   var s = textfield.value();
 
@@ -46,20 +50,50 @@ function spellWords() {
 	let c = s.charAt(i);
 	createP(c);
   serial.write(c);
+  console.log(c);
+
+	}
+}
+
+
+//////////////////////////////
+
+// function splitString() {
+//   var inputString = textfield.value();
+//   var outputArray = input.split('');
+//   console.log(outputArray);
+// }
+
+
+// var output = "Hello world!".split('');
+// console.log(output);
+//
+// const months = ['Jan', 'March', 'April', 'June'];
+// months.splice(0, 0, '////');
+// console.log(months);
+
+
+function testAlphabet() {
+  var alphabetString = "abcdefghijklmnopqrstuvwxyz>"
+
+  for (var i = 0; i < alphabetString.length; i++) {
+	let c = alphabetString.charAt(i);
+	console.log(c);
+  serial.write(c);
 	}
 }
 
 //explore setTimeout(create,1000); and setInterval
 
 // When triggered, the server sends H or L out the serial port
-function led() {
-  serial.write(outMessage);
-  if (outMessage === 'H') {
-    outMessage = 'L';
-  } else {
-    outMessage = 'H';
-  }
-}
+// function led() {
+//   serial.write(outMessage);
+//   if (outMessage === 'H') {
+//     outMessage = 'L';
+//   } else {
+//     outMessage = 'H';
+//   }
+// }
 
 
 

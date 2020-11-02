@@ -16,34 +16,63 @@ int board3[] = {
 
 int pinCount = 16;
 int timer = 50;
+int timer2 = 200;
 
 void setup() {
 
   Serial.begin(9600);
+  digitalWrite(32, HIGH);
 
   for (int thisPin = 0; thisPin < pinCount; thisPin++) {
     pinMode(board1[thisPin], OUTPUT);
   }
+   
+    for (int thisPin = 0; thisPin < pinCount; thisPin++) {
+    pinMode(board2[thisPin], OUTPUT);
+  }
+
+ 
+    for (int thisPin = 0; thisPin < pinCount; thisPin++) {
+    pinMode(board3[thisPin], OUTPUT);
+  }
+
+  Serial.println("Output pins initialised");
+  delay(500);
+  digitalWrite(32, LOW);
+  delay(500);
+
+
+
 }
+
+
+
 
 
 void loop() {
 
-  typewriterSend();
-
+ typewriterSend(50);   
+    
 }
+
+
 
 
 void triggerKey(int keyPin, int delayTime) {
 
+  
   digitalWrite(keyPin, HIGH);
+  digitalWrite(32, HIGH);
   delay(delayTime);
+  
   digitalWrite(keyPin, LOW);
-  delay(delayTime*2);
+  delay(delayTime*3);
+  digitalWrite(32, LOW);
+  
 }
 
 
-void typewriterSend() {
+void typewriterSend(int timer) {
 
   if (Serial.available() > 0) {
     int inByte = Serial.read();
@@ -89,9 +118,9 @@ void typewriterSend() {
         triggerKey(board1[9], timer);
         break;
 
-      case '.':
-        triggerKey(board1[10], timer);
-        break;
+//      case 'm':
+//        triggerKey(board1[10], timer);
+//        break;
 
       case '&':
         triggerKey(board1[11], timer);
@@ -106,9 +135,15 @@ void typewriterSend() {
         triggerKey(board1[13], timer);
         break;
 
-//        case 'shit': 
+//        case 'shift': 
 //        triggerKey(board1[14], timer);
 //        break;
+
+
+//return
+        case ' ': 
+        triggerKey(board1[15], timer);
+        break;
 
 
 
@@ -225,17 +260,25 @@ void typewriterSend() {
         triggerKey(board3[11], timer);
         break;
 
-//      case 'm':
-//        triggerKey(board3[12], timer);
-//        break;
+      case ':':
+        triggerKey(board3[12], timer);
+        break;
 
        case ')':
         triggerKey(board3[13], timer);
         break;
 
-//     case 'y':
-//        triggerKey(board3[14], timer);
-//        break;
+     case '%':
+        triggerKey(board3[14], timer);
+        break;
+
+     case '>':
+        triggerKey(board3[14], timer);
+        break;
+
+     case 'N':
+        triggerKey(board3[15], timer);
+        break;
         
       default:
         for (int thisPin = 0; thisPin < pinCount; thisPin++) {
@@ -245,3 +288,31 @@ void typewriterSend() {
   }
 
 }
+
+
+
+
+  
+//}
+//
+//
+//void testBoard2() {
+//    for (int thisPin = 0; thisPin < pinCount; thisPin++) {
+//    digitalWrite(board2[thisPin], HIGH);
+//    delay(timer);
+//    digitalWrite(board2[thisPin], LOW);
+//    delay(timer2);
+//  }
+//}
+//
+//
+//void testBoard3() {
+//    for (int thisPin = 0; thisPin < pinCount; thisPin++) {
+//    digitalWrite(board3[thisPin], HIGH);
+//    delay(timer);
+//    digitalWrite(board3[thisPin], LOW);
+//    delay(timer2);
+//  }
+//}
+
+
