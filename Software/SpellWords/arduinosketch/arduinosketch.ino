@@ -86,7 +86,7 @@ void typewriterSend(int timer) {
         triggerKey(board1[1], timer);
         break;
 
-      case 'x':
+      case '#':
         triggerKey(board1[2], timer);
         break;
 
@@ -274,6 +274,7 @@ void typewriterSend(int timer) {
 
      case '>':
         triggerKey(board3[14], timer);
+        delay(500);
         break;
 
      case 'N':

@@ -6,9 +6,7 @@ var output;
 var submit;
 var alphabet;
 
-
 let portName = '/dev/tty.usbserial-1420'; // fill in your serial port name here
-
 
 function setup() {
   noCanvas();
@@ -42,7 +40,7 @@ function gotData() {
 }
 
 
-//////SPELL WORDS FUNCTION///////
+///////SPELL WORDS FUNCTION////////
 function spellWords() {
   var s = textfield.value();
 
@@ -74,7 +72,8 @@ function spellWords() {
 
 
 function testAlphabet() {
-  var alphabetString = "abcdefghijklmnopqrstuvwxyz>"
+  var alphabetString = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+  // var alphabetString = "test";
 
   for (var i = 0; i < alphabetString.length; i++) {
 	let c = alphabetString.charAt(i);
