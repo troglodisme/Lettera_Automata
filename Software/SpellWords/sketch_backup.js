@@ -16,6 +16,7 @@ function setup() {
 
 
   //serial
+
   serial = new p5.SerialPort();
   serial.list();
   serial.open(portName);

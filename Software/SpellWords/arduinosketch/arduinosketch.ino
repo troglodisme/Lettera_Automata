@@ -41,11 +41,7 @@ void setup() {
   digitalWrite(32, LOW);
   delay(500);
 
-
-
 }
-
-
 
 
 
@@ -54,7 +50,6 @@ void loop() {
  typewriterSend(50);   
     
 }
-
 
 
 
@@ -268,10 +263,6 @@ void typewriterSend(int timer) {
         triggerKey(board3[13], timer);
         break;
 
-     case '%':
-        triggerKey(board3[14], timer);
-        break;
-
      case '>':
         triggerKey(board3[14], timer);
         delay(500);
@@ -315,5 +306,3 @@ void typewriterSend(int timer) {
 //    delay(timer2);
 //  }
 //}
-
-
