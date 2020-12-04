@@ -1,16 +1,18 @@
-//maximum characters per line is about 60
 
+// This arduino sketch received serial commands and triggers each letter for a specific amount of time
+// Letters are split into 3 physical boards, board1 2 and 3.
+// Currently, a new line is create by sending the ">" character to the printer.
 int board1[] = {
   3, 2, 5, 4, 7, 6, 9, 8, 11, 10, 13, 12, 15, 14, 17, 16
 };
 
 int board2[] = {
   19, 18, 21, 20, 23, 22, 25, 24, 27, 26, 29, 28, 31, 30, 53, 52
-};      
+};
 
 int board3[] = {
   50, 51, 48, 49, 47, 45, 46, 44, 43, 42, 41, 40, 39, 38, 37, 36
-};   
+};
 
 
 
@@ -26,12 +28,12 @@ void setup() {
   for (int thisPin = 0; thisPin < pinCount; thisPin++) {
     pinMode(board1[thisPin], OUTPUT);
   }
-   
+
     for (int thisPin = 0; thisPin < pinCount; thisPin++) {
     pinMode(board2[thisPin], OUTPUT);
   }
 
- 
+
     for (int thisPin = 0; thisPin < pinCount; thisPin++) {
     pinMode(board3[thisPin], OUTPUT);
   }
@@ -47,23 +49,23 @@ void setup() {
 
 void loop() {
 
- typewriterSend(50);   
-    
+ typewriterSend(50);
+
 }
 
 
 
 void triggerKey(int keyPin, int delayTime) {
 
-  
+
   digitalWrite(keyPin, HIGH);
   digitalWrite(32, HIGH);
   delay(delayTime);
-  
+
   digitalWrite(keyPin, LOW);
   delay(delayTime*3);
   digitalWrite(32, LOW);
-  
+
 }
 
 
@@ -81,9 +83,15 @@ void typewriterSend(int timer) {
         triggerKey(board1[1], timer);
         break;
 
-      case '#':
+      case 'x':
         triggerKey(board1[2], timer);
         break;
+
+//using x instead of # for ascii codes
+
+//       case '#':
+//        triggerKey(board1[2], timer);
+//        break;
 
       case '4':
         triggerKey(board1[3], timer);
@@ -113,9 +121,9 @@ void typewriterSend(int timer) {
         triggerKey(board1[9], timer);
         break;
 
-//      case 'm':
-//        triggerKey(board1[10], timer);
-//        break;
+      case ';':
+        triggerKey(board1[10], timer);
+        break;
 
       case '&':
         triggerKey(board1[11], timer);
@@ -126,19 +134,16 @@ void typewriterSend(int timer) {
         break;
 
 //oumlout
-       case '|': 
+       case '|':
         triggerKey(board1[13], timer);
         break;
 
-//        case 'shift': 
+//        case 'shift':
 //        triggerKey(board1[14], timer);
 //        break;
 
 
-//return
-        case ' ': 
-        triggerKey(board1[15], timer);
-        break;
+
 
 
 
@@ -259,50 +264,28 @@ void typewriterSend(int timer) {
         triggerKey(board3[12], timer);
         break;
 
-       case ')':
+//this should be ")" but it's used for shift
+       case '>':
         triggerKey(board3[13], timer);
         break;
 
-     case '>':
+
+     case '\n':
         triggerKey(board3[14], timer);
         delay(500);
         break;
 
-     case 'N':
+     case ' ':
         triggerKey(board3[15], timer);
+        delay(250);
         break;
-        
+
       default:
         for (int thisPin = 0; thisPin < pinCount; thisPin++) {
         digitalWrite(thisPin, LOW);
         }
     }
+    Serial.println("available");
   }
 
 }
-
-
-
-
-  
-//}
-//
-//
-//void testBoard2() {
-//    for (int thisPin = 0; thisPin < pinCount; thisPin++) {
-//    digitalWrite(board2[thisPin], HIGH);
-//    delay(timer);
-//    digitalWrite(board2[thisPin], LOW);
-//    delay(timer2);
-//  }
-//}
-//
-//
-//void testBoard3() {
-//    for (int thisPin = 0; thisPin < pinCount; thisPin++) {
-//    digitalWrite(board3[thisPin], HIGH);
-//    delay(timer);
-//    digitalWrite(board3[thisPin], LOW);
-//    delay(timer2);
-//  }
-//}
